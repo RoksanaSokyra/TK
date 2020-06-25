@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+icAMDhTaHspSS9LFKTeAmbSxs7j6U+YDa1NFP+R09IuhdtixVu4+RhiquWHAYtmju1fReaVhqZno/bJ60DEMw==",
+  "dgSpecHash": "LlnOu0SfcZPAiKcv4Ahmgf6NEh6Fjyp7+StUiA55kbk2JlCwnwPV6v4FTOtkFEfRvKAAwLujN6vRAQrmI/enLA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rox\\source\\repos\\WebApplication5\\WebApplication5\\WebApplication5.csproj",
+  "projectFilePath": "C:\\Users\\Rox\\TK\\WebApplication5\\WebApplication5.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rox\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Rox\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

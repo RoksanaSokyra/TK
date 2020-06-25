@@ -7355,11 +7355,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rox\\source\\repos\\WebApplication5\\WebApplication5\\WebApplication5.csproj",
+      "projectUniqueName": "C:\\Users\\Rox\\TK\\WebApplication5\\WebApplication5.csproj",
       "projectName": "WebApplication5",
-      "projectPath": "C:\\Users\\Rox\\source\\repos\\WebApplication5\\WebApplication5\\WebApplication5.csproj",
+      "projectPath": "C:\\Users\\Rox\\TK\\WebApplication5\\WebApplication5.csproj",
       "packagesPath": "C:\\Users\\Rox\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rox\\source\\repos\\WebApplication5\\WebApplication5\\obj\\",
+      "outputPath": "C:\\Users\\Rox\\TK\\WebApplication5\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
