@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RawRabbit.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,12 @@ namespace WebApplication5.Services
         }
         public void SaveMessage(Message message)
         {
-            var conversation = _context.Conversations.Include(conv => conv.Messages).SingleOrDefault(x => x.ID == message.ConversationID);
+            var conversation = _context.Users.Include(user => user.Contacts)
+                .ThenInclude(contact => contact.Conversation)
+                .ThenInclude (conversation => conversation.Messages)
+                .SingleOrDefault(user => user.Username == message.SenderUsername).Contacts
+                .SingleOrDefault(user => user.Username == message.ReceiverUsername).Conversation;
+                //.Include(conv => conv.Messages).SingleOrDefault(x => x.Contacts.);
             if (conversation == null)
                 throw new AppException("Conversation not found");
             conversation.Messages.Add(message);
