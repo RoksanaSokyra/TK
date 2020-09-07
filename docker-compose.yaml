@@ -1,0 +1,54 @@
+version: "3"
+services:
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "ThisP@sswordIsVeryGood"
+      ACCEPT_EULA: "Y"
+    # healthcheck:
+    #   test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$$SA_PASSWORD" -Q "SELECT 1" || exit 1
+    #   interval: 10s
+    #   timeout: 3s
+    #   retries: 10
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    volumes:
+      # configure users and v_host
+      - ./rabbitmq/etc/definitions.json:/etc/rabbitmq/definitions.json
+
+      # additional configuration
+      # - ./rabbitmq/etc/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+
+      # logs
+      # - ./rabbitmq/data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+      # - ./rabbitmq/logs:/var/log/rabbitmq/log
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 5s
+      timeout: 15s
+      retries: 5
+
+
+# to use application in a container uncommnet lines below
+# remember to change hostnames of db and rabbit services from localhost
+  # web:
+  #   build: ./WebApplication5
+  #   ports:
+  #     - "5000:5000"
+  #     - "5001:5001"
+  #   restart: always
+  #   links:
+  #     - db
+  #     - rabbitmq
+  #
+  #   depends_on:
+  #     - db
+  #     - rabbitmq
