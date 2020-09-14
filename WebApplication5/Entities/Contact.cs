@@ -16,6 +16,7 @@ namespace WebApplication5.Entities
         public int ConversationID { get; set; }
         public string Username { get; set; }
         public string FirstName { get; set; }
+        public string LastName { get; set; }
         public virtual User User { get; set; }
         public virtual Conversation Conversation { get; set; }
 

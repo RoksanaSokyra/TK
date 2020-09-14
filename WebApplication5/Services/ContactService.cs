@@ -29,8 +29,8 @@ namespace WebApplication5.Services
                 throw new AppException("User not found");
             if (userInviting.Contacts.FirstOrDefault(user => user.Username == userInvited.Username) != null)
                 throw new AppException("User already added");
-            Contact contactUserInviting = new Contact() { FirstName = userInvited.FirstName, Username = userInvited.Username };
-            Contact contactUserInvited = new Contact() { FirstName = userInviting.FirstName, Username = userInviting.Username };
+            Contact contactUserInviting = new Contact() { FirstName = userInvited.FirstName, LastName = userInvited.LastName, Username = userInvited.Username };
+            Contact contactUserInvited = new Contact() { FirstName = userInviting.FirstName, LastName = userInviting.LastName, Username = userInviting.Username };
             userInviting.Contacts.Add(contactUserInviting);
             userInvited.Contacts.Add(contactUserInvited);
 
