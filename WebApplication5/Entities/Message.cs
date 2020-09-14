@@ -12,6 +12,7 @@ namespace WebApplication5.Entities
         public string SenderUsername { get; set; }
         public string ReceiverUsername { get; set; }
         public string Content { get; set; }
+        public DateTime TimeStamp { get; set; }
         public virtual Conversation Conversation { get; set; }
     }
 }
