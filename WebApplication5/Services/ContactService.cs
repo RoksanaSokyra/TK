@@ -27,7 +27,8 @@ namespace WebApplication5.Services
             var userInvited = _context.Users.Include(user => user.Contacts).SingleOrDefault(x => x.Username == username);
             if (userInviting == null || userInvited == null)
                 throw new AppException("User not found");
-            //sprawdzic czy juz nie ma takiego kontaktu
+            if (userInviting.Contacts.FirstOrDefault(user => user.Username == userInvited.Username) != null)
+                throw new AppException("User already added");
             Contact contactUserInviting = new Contact() { FirstName = userInvited.FirstName, Username = userInvited.Username };
             Contact contactUserInvited = new Contact() { FirstName = userInviting.FirstName, Username = userInviting.Username };
             userInviting.Contacts.Add(contactUserInviting);
