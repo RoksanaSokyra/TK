@@ -28,9 +28,10 @@ namespace WebApplication5.Services
                 .ThenInclude (conversation => conversation.Messages)
                 .SingleOrDefault(user => user.Username == message.SenderUsername).Contacts
                 .SingleOrDefault(user => user.Username == message.ReceiverUsername).Conversation;
-                //.Include(conv => conv.Messages).SingleOrDefault(x => x.Contacts.);
+                
             if (conversation == null)
                 throw new AppException("Conversation not found");
+            message.TimeStamp = DateTime.Now;
             conversation.Messages.Add(message);
             _context.SaveChanges();
         }
