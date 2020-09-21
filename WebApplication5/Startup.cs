@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using WebApplication5.Entities;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace WebApplication5
 {
@@ -37,7 +38,7 @@ namespace WebApplication5
                 _configuration.GetConnectionString("MessengerApplicationData")));
             services.AddMvc();
             services.AddCors();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // configure strongly typed settings objects
