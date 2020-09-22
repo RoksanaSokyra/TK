@@ -56,7 +56,8 @@ namespace WebApplication5.Services
                 //dostaje wiadomosc, zapisuje ja sobie w bazie w konwersacjach, przekierowuje wiadomosc na kolejke konwersacji 
                 Console.WriteLine("received {0}", message.Content); //potem to usunac
                 _service.SaveMessage(message);
-                _channel.BasicPublish(ConnectionConstants.IncomingConvExchange, message.ConversationID.ToString(), null, body); //przekazujemy wiadomosc na kolejki klientow
+                var data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
+                _channel.BasicPublish(ConnectionConstants.IncomingConvExchange, message.ConversationID.ToString(), null, data); //przekazujemy wiadomosc na kolejki klientow
                 //basicpublish gdzie dalej ma ta wiadomosc poleciec??
             };
             _channel.BasicConsume(queue: ConnectionConstants.MainQueue, autoAck: true, consumer: consumer);
